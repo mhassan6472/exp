@@ -1,0 +1,14 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- No INTERNET permission: this app is deliberately offline-only. -->
+    <application android:theme="@style/AppTheme" android:label="Orange Ledger" android:allowBackup="false" android:usesCleartextTraffic="false">
+        <activity android:name=".QuickAddActivity" android:exported="false" android:theme="@style/AppTheme"/>
+        <activity android:name=".MainActivity" android:exported="true">
+            <intent-filter><action android:name="android.intent.action.MAIN"/><category android:name="android.intent.category.LAUNCHER"/></intent-filter>
+        </activity>
+        <receiver android:name=".ExpenseWidget" android:exported="true">
+            <intent-filter><action android:name="android.appwidget.action.APPWIDGET_UPDATE"/></intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/expense_widget_info"/>
+        </receiver>
+        <receiver android:name=".BackupAlarmReceiver" android:exported="false"/>
+    </application>
+</manifest>
